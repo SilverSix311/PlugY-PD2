@@ -467,6 +467,7 @@ bool launchGameXP(LPSTR commandLine, LPSTR currentDirectory, LPSTR libraryName, 
 	ZeroMemory(&si, sizeof(si));
 	si.cb = sizeof(si);
 	ZeroMemory(&pi, sizeof(pi));
+	SetEnvironmentVariable("_NO_DEBUG_HEAP", "1");
 	BOOL success = CreateProcess(0, commandLine, 0, 0, false, DEBUG_PROCESS, 0, currentDirectory, &si, &pi);//DEBUG_ONLY_THIS_PROCESS
 	if (!success) return false;
 	DEBUG_EVENT DebugEvent;
